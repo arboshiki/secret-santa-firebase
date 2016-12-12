@@ -1,20 +1,21 @@
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
   <header class="mdl-layout__header">
-    <!--<div class="right-menu">-->
-      <!--<button id="demo-menu-lower-right"-->
-              <!--class="mdl-button mdl-js-button mdl-button&#45;&#45;icon">-->
-        <!--<i class="material-icons">more_vert</i>-->
-      <!--</button>-->
+    <div class="right-menu">
+      <img src="{{vm.user.photoURL}}" alt="{{vm.user.displayName}}" height="40px">
+      <button id="demo-menu-lower-right"
+              class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">more_vert</i>
+      </button>
 
-      <!--<ul class="mdl-menu mdl-menu&#45;&#45;bottom-right mdl-js-menu mdl-js-ripple-effect"-->
-          <!--for="demo-menu-lower-right">-->
-        <!--<li class="mdl-menu__item">Some Action</li>-->
-        <!--<li class="mdl-menu__item">Another Action</li>-->
-        <!--<li disabled class="mdl-menu__item">Disabled Action</li>-->
-        <!--<li class="mdl-menu__item">Yet Another Action</li>-->
-      <!--</ul>-->
-    <!--</div>-->
+      <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+          for="demo-menu-lower-right">
+        <li class="mdl-menu__item">Some Action</li>
+        <li class="mdl-menu__item">Another Action</li>
+        <li disabled class="mdl-menu__item">Disabled Action</li>
+        <li class="mdl-menu__item">Yet Another Action</li>
+      </ul>
+    </div>
   </header>
 
   <main class="mdl-layout__content">
@@ -37,8 +38,8 @@
           <!-- Simple Textfield -->
           <form action="#" id="createGroup">
             <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" id="sample1">
-              <label class="mdl-textfield__label" for="sample1">Enter Group name</label>
+              <mdl-text-field label="First Name" ng-model="first_name"></mdl-text-field>
+
 
             </div>
             <div class="">
@@ -71,13 +72,13 @@
               <td>NO</td>
               <td>
                 <button class="mdl-button mdl-js-button mdl-button--icon">
-                View
+                  <i class="material-icons">remove_red_eye</i>
               </button>
                 <button class="mdl-button mdl-js-button mdl-button--icon">
-                  Edit
+                  <i class="material-icons">mode_edit</i>
                 </button>
                 <button class="mdl-button mdl-js-button mdl-button--icon">
-                  Remove
+                  <i class="material-icons">delete</i>
                 </button>
               </td>
             </tr>
