@@ -6,13 +6,13 @@
 
   angular
     .module('secretSantaFirebase')
-    .factory('AuthService', AuthService);
+    .factory('Auth', Auth);
 
   /** @ngInject */
-  function AuthService($firebaseAuth) {
+  function Auth($firebaseAuth) {
     var auth = $firebaseAuth();
-    auth.loginState = 'app.login';
-    auth.dashboardState = 'app.dashboard';
+    auth.loginState = 'login';
+    auth.mainState = 'main';
 
     return auth;
   }

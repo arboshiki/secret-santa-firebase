@@ -1,7 +1,20 @@
-(function() {
-  'use strict';
+(function () {
+    'use strict';
 
-  angular
-    .module('secretSantaFirebase', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ui.router', 'toastr']);
+    angular
+        .module('secretSantaFirebase', [
+            'ngAnimate',
+            'ngCookies',
+            'ngTouch',
+            'ngSanitize',
+            'ngMessages',
+            'ngAria',
+            'ui.router',
+
+            'firebase',
+
+            'toastr',
+            'secretSantaFirebase.login'
+        ]);
 
 })();
