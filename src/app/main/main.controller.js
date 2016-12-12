@@ -21,6 +21,7 @@
     vm.openGroup = openGroup;
     vm.removeGroup = removeGroup;
     vm.logOut = logOut;
+    vm.copyGroupLink = copyGroupLink;
 
     function createGroup() {
       console.log(vm.groupName);
@@ -67,6 +68,9 @@
         firebase.database().ref().update(updateData);
 
       });
+
+    }
+    function copyGroupLink(group) {
 
     }
   }

@@ -61,10 +61,18 @@
                             <td class="mdl-data-table__cell--non-numeric">{{group.name}}</td>
                             <td>
                                 <button class="mdl-button mdl-js-button mdl-button--icon"
+                                        ng-click="vm.copyGroupLink(group)">
+                                    <i class="material-icons">link</i>
+                                </button>
+                                <button class="mdl-button mdl-js-button mdl-button--icon"
                                         ng-click="vm.openGroup(group)">
                                     <i class="material-icons">remove_red_eye</i>
                                 </button>
-                                <button class="mdl-button mdl-js-button mdl-button--icon" ng-click="vm.removeGroup(group)">
+                                <button class="mdl-button mdl-js-button mdl-button--icon">
+                                    <i class="material-icons">mode_edit</i>
+                                </button>
+                                <button class="mdl-button mdl-js-button mdl-button--icon"
+                                        ng-click="vm.removeGroup(group)">
                                     <i class="material-icons">delete</i>
                                 </button>
                             </td>
