@@ -1,9 +1,22 @@
 {
   "rules": {
-  	"users": {
+    "users": {
       "$uid": {
         ".read": "auth.uid == $uid",
-        ".write": "!data.exists() || auth.uid == $uid"
+        ".write": "auth.uid == $uid",
+        ".validate": "newData.hasChildren(['displayName', 'email', 'photoURL'])",
+        "displayName": {
+          ".validate": "newData.isString()"
+        },
+        "email": {
+          ".validate": "newData.isString()"
+        },
+        "photoURL": {
+          ".validate": "newData.isString()"
+        },
+        "$other": {
+          ".validate": false
+        }
       }
     },
     "groups": {
@@ -17,13 +30,52 @@
         "creatorId": {
           ".validate": "root.child('users').child(auth.uid).exists()"
         },
-        "$other": { ".validate": false }
+        "$other": {
+          ".validate": false
+        }
       }
     },
     "userGroups": {
+      ".read": false,
+      ".write": false,
       "$uid": {
+        ".read": "root.child('users').child($uid).exists() && auth.uid == $uid",
+        ".write": "root.child('users').child($uid).exists() && auth.uid == $uid",
         "$gid": {
-
+          ".validate": "!newData.exists() || (!data.exists() && newData.exists() && newData.hasChildren(['name']))",
+          "name": {
+            ".validate": "newData.isString() && newData.val().length < 128"
+          },
+          "creatorId": {
+            ".validate": "root.child('users').child(auth.uid).exists()"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      }
+    },
+    "groupUsers": {
+      ".read": false,
+      ".write": false,
+      "$gid": {
+        ".read": "root.child('groups').child($gid).exists()",
+        ".write": "root.child('groups').child($gid).exists()",
+        "$uid": {
+          ".write": "auth.uid == $uid",
+          ".validate": "newData.hasChildren(['displayName', 'email', 'photoURL'])",
+          "displayName": {
+            ".validate": "newData.isString()"
+          },
+          "email": {
+            ".validate": "newData.isString()"
+          },
+          "photoURL": {
+            ".validate": "newData.isString()"
+          },
+          "$other": {
+            ".validate": false
+          }
         }
       }
     }
