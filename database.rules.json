@@ -3,11 +3,29 @@
   	"users": {
       "$uid": {
         ".read": "auth.id == $uid",
-        ".write": "auth.id == $uid",
+        ".write": "auth.id == $uid"
       }
     },
     "groups": {
-      
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$gid": {
+        ".validate": "!newData.exists() || (!data.exists() && newData.exists() && newData.hasChildren(['name']))",
+        "name": {
+          ".validate": "newData.isString() && newData.val().length < 128"
+        },
+        "creatorId": {
+          ".validate": "root.child('users').child(auth.uid).exists()"
+        },
+        "$other": { ".validate": false }
+      }
+    },
+    "userGroups": {
+      "$uid": {
+        "$gid": {
+
+        }
+      }
     }
   }
 }
