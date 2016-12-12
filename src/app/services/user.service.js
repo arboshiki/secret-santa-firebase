@@ -25,7 +25,7 @@
               .set({
                 displayName: firebaseUser.displayName ? firebaseUser.displayName : '',
                 email: firebaseUser.email ? firebaseUser.email : '',
-                photoUrl: firebaseUser.photoUrl ? firebaseUser.photoUrl : '',
+                photoURL: firebaseUser.photoURL ? firebaseUser.photoURL : '',
               });
           }
         }, function (error) {
