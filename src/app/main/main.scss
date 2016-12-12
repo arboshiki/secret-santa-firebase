@@ -1,3 +1,14 @@
+body{
+  background-image: url("http://www.planwallpaper.com/static/images/merry-christmas-hd-images_fKSnyxt.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+main{
+  background: transparent;
+  .mdl-card{
+    background: transparent;
+  }
+}
 .mdl-layout__content{
   height: 100%;
 
@@ -16,6 +27,7 @@
       padding: 16px;
       margin: 0;
     }
+
     table{
       width: 100%;
       >thead{

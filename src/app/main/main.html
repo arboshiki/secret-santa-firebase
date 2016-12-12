@@ -21,7 +21,7 @@
 
     <main class="mdl-layout__content">
         <div class="page-content">
-            <div class="acme-card-wide mdl-card mdl-shadow--2dp" style="text-align: center">
+            <div class="acme-card-wide mdl-card" style="text-align: center">
                 <div class="mdl-card__title"></div>
                 <div class="caption-text">
                     <h4 class="">შექმენი ჯგუფი და გაუზიარე სხვებს ან დაკლიკე შენთვის გაზიარებულ ლინკზე</h4>
@@ -64,10 +64,7 @@
                                         ng-click="vm.openGroup(group)">
                                     <i class="material-icons">remove_red_eye</i>
                                 </button>
-                                <button class="mdl-button mdl-js-button mdl-button--icon">
-                                    <i class="material-icons">mode_edit</i>
-                                </button>
-                                <button class="mdl-button mdl-js-button mdl-button--icon">
+                                <button class="mdl-button mdl-js-button mdl-button--icon" ng-click="vm.removeGroup(group)">
                                     <i class="material-icons">delete</i>
                                 </button>
                             </td>
