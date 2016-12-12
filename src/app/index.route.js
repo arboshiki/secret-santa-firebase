@@ -1,21 +1,22 @@
-(function() {
-  'use strict';
+(function () {
+    'use strict';
 
-  angular
-    .module('secretSantaFirebase')
-    .config(routerConfig);
+    angular
+        .module('secretSantaFirebase')
+        .config(routerConfig);
 
-  /** @ngInject */
-  function routerConfig($stateProvider, $urlRouterProvider) {
-    $stateProvider
-      .state('home', {
-        url: '/',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainController',
-        controllerAs: 'main'
-      });
+    /** @ngInject */
+    function routerConfig($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/');
-  }
+        $stateProvider
+            .state('home', {
+                url: '/',
+                templateUrl: 'app/main/main.html',
+                controller: 'MainController',
+                controllerAs: 'main'
+            });
+
+        $urlRouterProvider.otherwise('/');
+    }
 
 })();
