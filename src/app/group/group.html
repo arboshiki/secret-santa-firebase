@@ -20,48 +20,24 @@
 
   <main class="mdl-layout__content">
     <div class="page-content">
-      <div class="acme-card-wide mdl-card mdl-shadow--2dp" style="text-align: center">
-        <div class="mdl-card__title"></div>
-        <div class="">
-            <h2 class="">'Hou Hou Hou, 'Hou!</h2>
-           <p> Always a pleasure scaffolding your apps.</p>
-        </div>
-
-        <div class="mdl-card__menu">
-          <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-            <i class="material-icons">share</i>
-          </button>
-        </div>
-      </div>
-      <div class="acme-card-wide mdl-card" style="text-align: center">
-        <div class="">
-          <!-- Simple Textfield -->
-          <form action="#" id="createGroup">
-            <div class="mdl-textfield mdl-js-textfield">
-              <input class="textfield__input" id="groupName" type="text" ng-model="vm.groupName">
-              <label class="mdl-textfield__label" for="groupName">Enter Group Name</label>
-            </div>
-            {{vm.groupName}}
-            <div class="">
-              <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="vm.createGroup()">
-                Create Group
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
       <div class="acme-card-wide mdl-card" style="text-align: center">
         <div class="">
           <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
             <thead>
             <tr>
-              <th>Group Name</th>
+              <th>Avatar</th>
+              <th>Display Name</th>
+              <th>Email</th>
               <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="group in vm.groups">
-              <td class="mdl-data-table__cell--non-numeric">{{group.name}}</td>
+            <tr ng-repeat="user in vm.users">
+              <td class="mdl-data-table__cell--non-numeric">
+                <img ng-src="{{user.photoURL}}" alt="" style="width: 50px;">
+              </td>
+              <td class="mdl-data-table__cell--non-numeric">{{user.displayName}}</td>
+              <td class="mdl-data-table__cell--non-numeric">{{user.email}}</td>
               <td>
                 <button class="mdl-button mdl-js-button mdl-button--icon" ng-click="vm.openGroup(group)">
                   <i class="material-icons">remove_red_eye</i>

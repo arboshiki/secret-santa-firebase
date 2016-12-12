@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($rootScope, toastr, UserService) {
+  function MainController($rootScope, toastr, UserService, FirebaseService, $state) {
     var vm = this;
 
     console.log(UserService.current);
@@ -14,10 +14,11 @@
     vm.isOwner = true;
     vm.user = UserService.current;
     vm.groupName = null;
+    vm.groups = FirebaseService.getGroupsByUser(vm.user.uid);
 
     // methods
     vm.createGroup = createGroup;
-
+    vm.openGroup = openGroup;
 
     function createGroup() {
       console.log(vm.groupName);
@@ -26,9 +27,24 @@
         'creatorId': vm.user.uid
       };
 
-      firebase.database().ref('groups').push().set(dataGroups);
+      var groupRef = firebase.database().ref('groups').push();
+      var groupId = groupRef.getKey();
+
+      var updateData = {};
+      updateData['groups/' + groupId] = dataGroups;
+      updateData['userGroups/' + vm.user.uid + '/' + groupId] = dataGroups;
+      console.log(updateData);
+      firebase.database().ref().update(updateData);
+
+
+      UserService.saveUserData('groupUsers/' +'/'+ groupId +'/'+ vm.user.uid, vm.user);
+
 
       // firebase.database().ref('groupUsers').push().set(data);
+    }
+
+    function openGroup(group) {
+      $state.go('group', {'groupId': group.$id});
     }
   }
 })();

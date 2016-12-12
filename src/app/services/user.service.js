@@ -13,16 +13,13 @@
   /** @ngInject */
   function UserService(Auth, $rootScope, $log) {
     var users = {
-      current: null
+      current: null,
+
+      saveUserData: saveUserData
     };
 
     function createCurrentUser(firebaseUser) {
-      firebase.database().ref('users/' + firebaseUser.uid)
-        .set({
-          displayName: firebaseUser.displayName ? firebaseUser.displayName : '',
-          email: firebaseUser.email ? firebaseUser.email : '',
-          photoURL: firebaseUser.photoURL ? firebaseUser.photoURL : '',
-        });
+      saveUserData('users/' + firebaseUser.uid, firebaseUser)
     }
 
     Auth.$onAuthStateChanged(function (firebaseUser) {
@@ -41,5 +38,13 @@
     });
 
     return users;
+  }
+
+  function saveUserData(ref, firebaseUser) {
+    firebase.database().ref(ref).set({
+      displayName: firebaseUser.displayName ? firebaseUser.displayName : '',
+      email: firebaseUser.email ? firebaseUser.email : '',
+      photoURL: firebaseUser.photoURL ? firebaseUser.photoURL : '',
+    });
   }
 })();
