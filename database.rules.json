@@ -2,8 +2,8 @@
   "rules": {
   	"users": {
       "$uid": {
-        ".read": "auth.id == $uid",
-        ".write": "auth.id == $uid"
+        ".read": "auth.uid == $uid",
+        ".write": "!data.exists() || auth.uid == $uid"
       }
     },
     "groups": {
