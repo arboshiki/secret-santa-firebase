@@ -39,7 +39,7 @@
               <td class="mdl-data-table__cell--non-numeric">{{user.displayName}}</td>
               <td class="mdl-data-table__cell--non-numeric">{{user.email}}</td>
               <td>
-                <button class="mdl-button mdl-js-button mdl-button--icon" ng-click="vm.removeUser(user)">
+                <button class="mdl-button mdl-js-button mdl-button--icon" ng-click="vm.removeUser(user)" ng-hide="user.$id == vm.user.uid">
                   <i class="material-icons">delete</i>
                 </button>
               </td>

@@ -6,10 +6,10 @@
     .controller('GroupController', GroupController);
 
   /** @ngInject */
-  function GroupController($rootScope, toastr, UserService, FirebaseService, users, $stateParams) {
+  function GroupController($rootScope, toastr, UserService, FirebaseService, users, $stateParams, Auth) {
     var vm = this;
     vm.users = users;
-
+    vm.user = UserService.current;
 
     //methods
     vm.removeUser = removeUser;
