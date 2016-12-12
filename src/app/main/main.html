@@ -38,12 +38,12 @@
           <!-- Simple Textfield -->
           <form action="#" id="createGroup">
             <div class="mdl-textfield mdl-js-textfield">
-              <mdl-text-field label="First Name" ng-model="first_name"></mdl-text-field>
-
-
+              <input class="textfield__input" id="groupName" type="text" ng-model="vm.groupName">
+              <label class="mdl-textfield__label" for="groupName">Enter Group Name</label>
             </div>
+            {{vm.groupName}}
             <div class="">
-              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect ">
+              <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="vm.createGroup()">
                 Create Group
               </button>
             </div>
