@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
 
   angular
@@ -7,6 +7,7 @@
 
   /** @ngInject */
   function MainController($rootScope, toastr, UserService, FirebaseService, $state) {
+  function MainController($rootScope, toastr, UserService, Auth) {
     var vm = this;
 
     console.log(UserService.current);
@@ -19,6 +20,7 @@
     // methods
     vm.createGroup = createGroup;
     vm.openGroup = openGroup;
+    vm.logOut = logOut;
 
     function createGroup() {
       console.log(vm.groupName);
@@ -41,6 +43,10 @@
 
 
       // firebase.database().ref('groupUsers').push().set(data);
+
+    }
+    function logOut() {
+      Auth.$signOut();
     }
 
     function openGroup(group) {
