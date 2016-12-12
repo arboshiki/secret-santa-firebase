@@ -21,12 +21,14 @@
 
     function createGroup() {
       console.log(vm.groupName);
-      var data = {
+      var dataGroups = {
         'name': vm.groupName,
-        'ownerUserId': vm.user.uid
+        'creatorId': vm.user.uid
       };
 
-      firebase.database().ref('group').push().set(data);
+      firebase.database().ref('groups').push().set(dataGroups);
+
+      // firebase.database().ref('groupUsers').push().set(data);
     }
   }
 })();
