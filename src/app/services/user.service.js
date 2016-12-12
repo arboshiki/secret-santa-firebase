@@ -43,6 +43,8 @@
       displayName: firebaseUser.displayName ? firebaseUser.displayName : '',
       email: firebaseUser.email ? firebaseUser.email : '',
       photoURL: firebaseUser.photoURL ? firebaseUser.photoURL : '',
+    }).then(function(){
+      console.log(this);
     });
   }
 })();

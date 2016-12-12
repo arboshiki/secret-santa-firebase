@@ -36,8 +36,6 @@
       }
     },
     "userGroups": {
-      ".read": false,
-      ".write": false,
       "$uid": {
         ".read": "root.child('users').child($uid).exists() && auth.uid == $uid",
         ".write": "root.child('users').child($uid).exists() && auth.uid == $uid",
@@ -56,8 +54,6 @@
       }
     },
     "groupUsers": {
-      ".read": false,
-      ".write": false,
       "$gid": {
         ".read": "root.child('groups').child($gid).exists()",
         ".write": "root.child('groups').child($gid).exists()",

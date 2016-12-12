@@ -1,0 +1,30 @@
+.mdl-layout__content{
+  height: 100%;
+
+  .mdl-card{
+    padding: 24px;
+  }
+
+  .caption-text{
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .mdl-data-table{
+    width: 400px;
+    .caption{
+      padding: 16px;
+      margin: 0;
+    }
+    table{
+      width: 100%;
+      >thead{
+        >tr{
+          th{
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+}
