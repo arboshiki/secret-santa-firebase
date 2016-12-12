@@ -56,13 +56,15 @@
     function removeGroup(group) {
       var groupId = group.$id;
       FirebaseService.getUsersByGroup(groupId).$loaded().then(function (res) {
-        for(var i = 0; i < res.length; i++){
-          firebase.database().ref('userGroups/'+res[i].$id).remove();
-        }
-        firebase.database().ref('groupUsers/'+groupId).remove(function () {
-          firebase.database().ref('groups/'+groupId).remove();
-        });
 
+        var updateData ={};
+        for(var i = 0; i < res.length; i++){
+          updateData['userGroups/'+res[i].$id+'/'+groupId] = null;
+        }
+        updateData['groupUsers/'+groupId] = null;
+        updateData['groups/'+groupId] = null;
+
+        firebase.database().ref().update(updateData);
 
       });
 
