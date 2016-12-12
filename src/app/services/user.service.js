@@ -4,8 +4,6 @@
 (function () {
   'use strict';
 
-  'use strict';
-
   angular
     .module('secretSantaFirebase')
     .factory('UserService', UserService);
