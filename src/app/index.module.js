@@ -10,7 +10,7 @@
             'ngMessages',
             'ngAria',
             'ui.router',
-
+            'mdl',
             'firebase',
 
             'toastr',
