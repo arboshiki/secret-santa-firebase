@@ -16,25 +16,24 @@
       current: null
     };
 
+    function createCurrentUser(firebaseUser) {
+      firebase.database().ref('users/' + firebaseUser.uid)
+        .set({
+          displayName: firebaseUser.displayName ? firebaseUser.displayName : '',
+          email: firebaseUser.email ? firebaseUser.email : '',
+          photoURL: firebaseUser.photoURL ? firebaseUser.photoURL : '',
+        });
+    }
+
     Auth.$onAuthStateChanged(function (firebaseUser) {
       users.current = firebaseUser;
       if (firebaseUser != null) {
         firebase.database().ref('users/' + firebaseUser.uid).once('value', function (snapshot) {
           if (!snapshot.exists()) {
-            firebase.database().ref('users/' + firebaseUser.uid)
-              .set({
-                displayName: firebaseUser.displayName ? firebaseUser.displayName : '',
-                email: firebaseUser.email ? firebaseUser.email : '',
-                photoURL: firebaseUser.photoURL ? firebaseUser.photoURL : '',
-              });
+            createCurrentUser(firebaseUser);
           }
         }, function (error) {
-          firebase.database().ref('users/' + firebaseUser.uid)
-            .set({
-              displayName: firebaseUser.displayName ? firebaseUser.displayName : '',
-              email: firebaseUser.email ? firebaseUser.email : '',
-              photoUrl: firebaseUser.photoUrl ? firebaseUser.photoUrl : '',
-            });
+          createCurrentUser(firebaseUser);
         });
       }
       $rootScope.$emit('userStateChange', firebaseUser);
