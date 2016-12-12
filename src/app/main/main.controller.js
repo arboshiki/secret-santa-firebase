@@ -19,6 +19,7 @@
     // methods
     vm.createGroup = createGroup;
     vm.openGroup = openGroup;
+    vm.removeGroup = removeGroup;
     vm.logOut = logOut;
 
     function createGroup() {
@@ -50,6 +51,21 @@
 
     function openGroup(group) {
       $state.go('group', {'groupId': group.$id});
+    }
+
+    function removeGroup(group) {
+      var groupId = group.$id;
+      FirebaseService.getUsersByGroup(groupId).$loaded().then(function (res) {
+        for(var i = 0; i < res.length; i++){
+          firebase.database().ref('userGroups/'+res[i].$id).remove();
+        }
+        firebase.database().ref('groupUsers/'+groupId).remove(function () {
+          firebase.database().ref('groups/'+groupId).remove();
+        });
+
+
+      });
+
     }
   }
 })();

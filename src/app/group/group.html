@@ -33,18 +33,12 @@
             </thead>
             <tbody>
             <tr ng-repeat="user in vm.users">
-              <td class="mdl-data-table__cell--non-numeric">
-                <img ng-src="{{user.photoURL}}" alt="" style="width: 50px;">
+              <td class="mdl-data-table__cell--non-numeric" style="padding-bottom: 15px">
+                <img ng-src="{{user.photoURL}}" alt="" style="height: 35px;">
               </td>
               <td class="mdl-data-table__cell--non-numeric">{{user.displayName}}</td>
               <td class="mdl-data-table__cell--non-numeric">{{user.email}}</td>
               <td>
-                <button class="mdl-button mdl-js-button mdl-button--icon" ng-click="vm.openGroup(group)">
-                  <i class="material-icons">remove_red_eye</i>
-              </button>
-                <button class="mdl-button mdl-js-button mdl-button--icon">
-                  <i class="material-icons">mode_edit</i>
-                </button>
                 <button class="mdl-button mdl-js-button mdl-button--icon">
                   <i class="material-icons">delete</i>
                 </button>

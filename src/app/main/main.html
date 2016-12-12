@@ -2,6 +2,7 @@
 
   <header class="mdl-layout__header">
     <div class="right-menu">
+      {{vm.user.displayName}}
       <img src="{{vm.user.photoURL}}" alt="{{vm.user.displayName}}" height="40px">
       <button id="demo-menu-lower-right"
               class="mdl-button mdl-js-button mdl-button--icon">
@@ -66,10 +67,7 @@
                 <button class="mdl-button mdl-js-button mdl-button--icon" ng-click="vm.openGroup(group)">
                   <i class="material-icons">remove_red_eye</i>
               </button>
-                <button class="mdl-button mdl-js-button mdl-button--icon">
-                  <i class="material-icons">mode_edit</i>
-                </button>
-                <button class="mdl-button mdl-js-button mdl-button--icon">
+                <button class="mdl-button mdl-js-button mdl-button--icon" ng-click="vm.removeGroup(group)">
                   <i class="material-icons">delete</i>
                 </button>
               </td>
