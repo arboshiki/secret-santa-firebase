@@ -6,8 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($rootScope, toastr, UserService, FirebaseService, $state) {
-  function MainController($rootScope, toastr, UserService, Auth) {
+  function MainController($rootScope, toastr, UserService, FirebaseService, $state, Auth) {
     var vm = this;
 
     console.log(UserService.current);
