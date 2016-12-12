@@ -5,25 +5,21 @@
     'use strict';
 
     angular
-        .module('app.login', [])
+        .module('secretSantaFirebase.login', [])
         .config(Config);
 
     /** @ngInject */
-    function Config($stateProvider, $translatePartialLoaderProvider) {
+    function Config($stateProvider) {
 
 
         $stateProvider
-            .state('app.login', {
+            .state('login', {
                 url: '/login',
-                views: {
-                    templateUrl: 'app/login/login.html',
-                    controller: 'LoginController',
-                    controllerAs: 'vm'
-                },
+                templateUrl: 'app/login/login.html',
+                controller: 'LoginController',
+                controllerAs: 'vm',
                 bodyClass: 'login'
             });
 
-        // Translation
-        $translatePartialLoaderProvider.addPart('app/main/pages/auth/login');
     }
 })();

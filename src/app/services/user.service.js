@@ -11,12 +11,12 @@
         .factory('UserService', UserService);
 
     /** @ngInject */
-    function UserService(AuthService, $rootScope, $log) {
+    function UserService(Auth, $rootScope, $log) {
         var users = {
             current: null
         };
 
-        AuthService.$onAuthStateChanged(function (firebaseUser) {
+        Auth.$onAuthStateChanged(function (firebaseUser) {
             users.current = firebaseUser;
             $rootScope.$emit('userStateChange', firebaseUser);
             $log.debug("User state has been changed. Current User: ", firebaseUser);

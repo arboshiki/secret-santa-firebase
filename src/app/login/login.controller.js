@@ -1,26 +1,27 @@
-(function() {
+(function () {
   'use strict';
 
   angular
-    .module('app.login')
+    .module('secretSantaFirebase.login')
     .controller('LoginController', LoginController);
 
   /** @ngInject */
-  function LoginController($timeout, webDevTec, toastr) {
+  function LoginController(Auth,$log) {
     var vm = this;
+    vm.loginWithGoogle = loginWithGoogle;
 
-    vm.awesomeThings = [];
-    vm.classAnimation = '';
-    vm.creationDate = 1481527777906;
-    vm.showToastr = showToastr;
 
-    activate();
+    function loginWithGoogle() {
+      var provider = new firebase.auth.GoogleAuthProvider();
 
-    function activate() {
-      getWebDevTec();
-      $timeout(function() {
-        vm.classAnimation = 'rubberBand';
-      }, 4000);
+      Auth
+        .$signInWithPopup(provider)
+        .then(function successCallback() {
+          $log.debug("Sign in with popup callback", arguments);
+        })
+        .catch(function errorCallback(error) {
+          vm.errorMessage = error.message;
+        });
     }
   }
 })();
