@@ -55,9 +55,10 @@ main {
 
   > .mdl-card__title {
     color: #fff;
-    height: 176px;
-    background: url('../assets/images/logo.png') center / cover;
-    background-size: 110px;
+    height: 200px;
+    //width: 300px;
+    background: url('../assets/images/logo.gif') center / cover;
+    background-size: 600px;
     background-repeat: no-repeat;
   }
 
@@ -97,10 +98,14 @@ main {
 .mdl-layout__header{
   display: block;
   text-align: right;
+  background-color: #c71c20;
   .right-menu{
     margin-right: 20px;
     margin-top: 14px;
   }
+}
+.mdl-data-table{
+  margin: 0 auto;
 }
 /**
  *  Do not remove the comment below. It's the markers used by gulp-inject to inject

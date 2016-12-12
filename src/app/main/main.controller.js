@@ -13,6 +13,8 @@
     vm.classAnimation = '';
     vm.creationDate = 1481527777906;
     vm.showToastr = showToastr;
+    vm.isLogedIn = true;
+    vm.isOwner = true;
 
     activate();
 

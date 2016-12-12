@@ -21,7 +21,7 @@
     <div class="page-content">
       <div class="acme-card-wide mdl-card mdl-shadow--2dp" style="text-align: center">
         <div class="mdl-card__title"></div>
-        <div class="mdl-card__supporting-text">
+        <div class="">
             <h2 class="">'Hou Hou Hou, 'Hou!</h2>
            <p> Always a pleasure scaffolding your apps.</p>
         </div>
@@ -32,27 +32,46 @@
           </button>
         </div>
       </div>
-      <div class="mdl-grid">
+      <div class="acme-card-wide mdl-card" style="text-align: center">
+        <div class="">
+          <!-- Simple Textfield -->
+          <form action="#" id="createGroup">
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" id="sample1">
+              <label class="mdl-textfield__label" for="sample1">Enter Group name</label>
 
-        <div class="mdl-cell mdl-cell--4-col" ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'">
-          <div class="acme-card-square mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title">
-              <h2 class="mdl-card__title-text">{{ awesomeThing.title }}</h2>
             </div>
-            <div class="mdl-card__media">
-              <img ng-src="assets/images/{{ awesomeThing.logo }}" alt="{{ awesomeThing.title }}">
+            <div class="">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect ">
+                Create Group
+              </button>
             </div>
-            <div class="mdl-card__supporting-text">
-              {{ awesomeThing.description }}
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" ng-href="{{ awesomeThing.url }}">
-                Website
-              </a>
-            </div>
-          </div>
+          </form>
         </div>
-
+      </div>
+      <div class="acme-card-wide mdl-card" style="text-align: center">
+        <div class="">
+          <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+            <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">
+                First Name
+              </th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Assigned</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">Gio</td>
+              <td>Keshikashvili</td>
+              <td>keshi@gmail.com</td>
+              <td>NO</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </main>
@@ -60,7 +79,7 @@
   <footer class="mdl-mini-footer">
     <div class="mdl-mini-footer__right-section">
       <div class="mdl-logo">
-        With ♥ thanks to the contributions of<acme-malarkey extra-values="['Yeoman', 'Gulp', 'Angular']"></acme-malarkey>
+        Secret Santa Group 2016&copy All Right Reserved.
       </div>
     </div>
   </footer>
