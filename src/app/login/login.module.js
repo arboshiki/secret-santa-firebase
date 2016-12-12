@@ -11,7 +11,6 @@
     /** @ngInject */
     function Config($stateProvider) {
 
-
         $stateProvider
             .state('login', {
                 url: '/login',
