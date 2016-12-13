@@ -35,7 +35,7 @@
             $state.go(Auth.mainState);
           }
         } else {
-          $state.go(Auth.loginState);
+          // $state.go(Auth.loginState);
         }
       });
       $scope.$on('$destroy', userStateChangeFn);

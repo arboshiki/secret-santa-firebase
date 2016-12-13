@@ -15,6 +15,9 @@
     
     function init() {
       //console.log(vm.user);
+      // $rootScope.$on('userStateChange',function (user) {
+      //   vm.user = user;
+      // });
       if(vm.group){
         if(vm.user){
           joinGroup();

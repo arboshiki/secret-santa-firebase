@@ -9,7 +9,7 @@
   function routerConfig($stateProvider, $urlRouterProvider) {
 
 
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/');
 
     $stateProvider
       .state('group', {

@@ -13,7 +13,7 @@
 
         $stateProvider
             .state('login', {
-                url: '/login',
+                url: '/login/:groupId?',
                 templateUrl: 'app/login/login.html',
                 controller: 'LoginController',
                 controllerAs: 'vm',

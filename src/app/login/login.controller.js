@@ -6,7 +6,7 @@
     .controller('LoginController', LoginController);
 
   /** @ngInject */
-  function LoginController(Auth,$log) {
+  function LoginController(Auth, $log, $stateParams) {
     var vm = this;
     vm.loginWithGoogle = loginWithGoogle;
     vm.loginWithFacebook = loginWithFacebook;
@@ -19,11 +19,13 @@
         .$signInWithPopup(provider)
         .then(function successCallback() {
           $log.debug("Sign in with popup callback", arguments);
+
         })
         .catch(function errorCallback(error) {
           vm.errorMessage = error.message;
         });
     }
+
     function loginWithFacebook() {
       var provider = new firebase.auth.FacebookAuthProvider();
 
@@ -31,6 +33,7 @@
         .$signInWithPopup(provider)
         .then(function successCallback() {
           $log.debug("Sign in with popup callback", arguments);
+
         })
         .catch(function errorCallback(error) {
           vm.errorMessage = error.message;
