@@ -46,6 +46,26 @@
             return Auth.$requireSignIn();
           }]
         }
+      }).state('join-game', {
+        url: '/join-game/:groupId',
+        templateUrl: 'app/joinGame/joinGame.html',
+        controller: 'JoinGameController',
+        controllerAs: 'vm',
+        resolve: {
+          // controller will not be loaded until $waitForSignIn resolves
+          // Auth refers to our $firebaseAuth wrapper in the factory below
+          // "currentAuth": ["Auth", function (Auth) {
+          //   console.log("resolve");
+          //   // $waitForSignIn returns a promise so the resolve waits for it to complete
+          //   return Auth.$requireSignIn();
+          // }]
+          "group": ["FirebaseService", "$stateParams", function (FirebaseService, $stateParams) {
+            console.log("users resolve");
+            // $waitForSignIn returns a promise so the resolve waits for it to complete
+            return FirebaseService.getGroupById($stateParams.groupId);
+          }]
+
+        }
       });
 
   }

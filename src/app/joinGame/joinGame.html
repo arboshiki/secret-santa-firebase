@@ -1,0 +1,92 @@
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+    <header class="mdl-layout__header">
+        <div class="right-menu">
+            <img src="{{vm.user.photoURL}}" alt="{{vm.user.displayName}}" height="40px">
+            &nbsp; {{vm.user.displayName}}
+            <button id="demo-menu-lower-right"
+                    class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons">more_vert</i>
+            </button>
+
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                for="demo-menu-lower-right">
+                <li class="mdl-menu__item" ng-click="vm.logOut()">გამოსვლა</li>
+                <li class="mdl-menu__item">Another Action</li>
+                <li disabled class="mdl-menu__item">Disabled Action</li>
+                <li class="mdl-menu__item">Yet Another Action</li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <div class="acme-card-wide mdl-card" style="text-align: center">
+                <div class="mdl-card__title"></div>
+                <div class="caption-text">
+                    <h4 class="">შექმენი ჯგუფი და გაუზიარე სხვებს ან დაკლიკე შენთვის გაზიარებულ ლინკზე</h4>
+                </div>
+            </div>
+            <div class="acme-card-wide mdl-card" style="text-align: center">
+                <div class="">
+                    <!-- Simple Textfield -->
+                    <form action="#" id="createGroup">
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="textfield__input" id="groupName" type="text" ng-model="vm.groupName">
+                            <label class="mdl-textfield__label" for="groupName">Enter Group Name</label>
+                        </div>
+                        {{vm.groupName}}
+                        <div class="">
+                            <button type="button"
+                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+                                    ng-click="vm.createGroup()">
+                                Create Group
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="acme-card-wide mdl-card" style="text-align: center">
+                <div class="mdl-data-table">
+                    <h5 class="caption">ჩემი ჯგუფები</h5>
+                    <table class="">
+                        <thead>
+                        <tr>
+                            <th>Group Name</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="group in vm.groups">
+                            <td class="mdl-data-table__cell--non-numeric">{{group.name}}</td>
+                            <td>
+                                <button class="mdl-button mdl-js-button mdl-button--icon"
+                                        ng-click="vm.copyGroupLink(group)">
+                                    <i class="material-icons">link</i>
+                                </button>
+                                <button class="mdl-button mdl-js-button mdl-button--icon"
+                                        ng-click="vm.openGroup(group)">
+                                    <i class="material-icons">remove_red_eye</i>
+                                </button>
+                                <button class="mdl-button mdl-js-button mdl-button--icon"
+                                        ng-click="vm.removeGroup(group)">
+                                    <i class="material-icons">delete</i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!--<footer class="mdl-mini-footer">-->
+    <!--<div class="mdl-mini-footer__right-section">-->
+    <!--<div class="mdl-logo">-->
+    <!--Secret Santa Group 2016&copy All Right Reserved.-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</footer>-->
+
+</div>

@@ -71,7 +71,10 @@
 
     }
     function copyGroupLink(group) {
-
+      var url = window.location.href;
+      var arr = url.split("/");
+      var link = arr[0] + "//" + arr[2] + '/#/join-game/'+group.$id;
+        console.log(link);
     }
   }
 })();
