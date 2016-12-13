@@ -6,17 +6,25 @@
     .controller('GroupController', GroupController);
 
   /** @ngInject */
-  function GroupController($rootScope, toastr, UserService, FirebaseService, users, $stateParams, Auth) {
+  function GroupController($rootScope, toastr, UserService, FirebaseService, users, $stateParams, Auth, $firebaseObject) {
 
     var vm = this;
     vm.users = users;
     vm.user = UserService.current;
-
+    vm.generated = true;
 
     //methods
     vm.removeUser = removeUser;
     vm.generateAssignments = generateAssignments;
 
+
+    init();
+
+    function init() {
+      firebase.database().ref('assigned/' + $stateParams.groupId).once('value',function (res) {
+        vm.generated = res.val() != null;
+      });
+    }
 
     function removeUser(user) {
       var updateData = {};
@@ -59,6 +67,8 @@
         return;
       }
       firebase.database().ref('assigned/' + $stateParams.groupId).update(updateData);
+      toastr.success('წარმატებით დაგენერირდა','წარმატება');
+      vm.generated = true;
     }
 
     function randomize(assign, choose) {
@@ -82,7 +92,6 @@
           updateData[assign[i]] = choosedUser;
         }
       }
-
       return updateData;
     }
       // firebase.database().ref('groupUsers').push().set(data);
