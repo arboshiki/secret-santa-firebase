@@ -4,7 +4,7 @@
         <div class="right-menu">
             <img src="{{vm.user.photoURL}}" alt="{{vm.user.displayName}}" height="40px">
             &nbsp; {{vm.user.displayName}}
-            <button id="demo-menu-lower-right"
+            <button id="demo-menu-lower-right" ng-click="vm.logOut()"
                     class="mdl-button mdl-js-button mdl-button--icon">
                 <i class="material-icons">more_vert</i>
             </button>

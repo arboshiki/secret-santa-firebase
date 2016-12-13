@@ -9,7 +9,7 @@
     .controller('IndexController', IndexController);
 
   /** @ngInject */
-  function IndexController($scope, $rootScope, UserService, Auth, $state) {
+  function IndexController($scope, $rootScope, UserService, Auth, $state, $stateParams) {
     // var vm = this;
 
     // Data
@@ -32,7 +32,12 @@
       var userStateChangeFn = $rootScope.$on('userStateChange', function($event, user){
         if (user){
           if($state.current.name == 'login'){
-            $state.go(Auth.mainState);
+            debugger;
+            if($stateParams.groupId){
+              $state.go('join-game',{groupId: $stateParams.groupId})
+            }else{
+              $state.go(Auth.mainState);
+            }
           }
         } else {
           // $state.go(Auth.loginState);

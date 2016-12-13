@@ -6,7 +6,7 @@
     .controller('LoginController', LoginController);
 
   /** @ngInject */
-  function LoginController(Auth, $log, $stateParams) {
+  function LoginController(Auth, $log, $stateParams, $state) {
     var vm = this;
     vm.loginWithGoogle = loginWithGoogle;
     vm.loginWithFacebook = loginWithFacebook;
@@ -19,7 +19,6 @@
         .$signInWithPopup(provider)
         .then(function successCallback() {
           $log.debug("Sign in with popup callback", arguments);
-
         })
         .catch(function errorCallback(error) {
           vm.errorMessage = error.message;
@@ -33,11 +32,11 @@
         .$signInWithPopup(provider)
         .then(function successCallback() {
           $log.debug("Sign in with popup callback", arguments);
-
         })
         .catch(function errorCallback(error) {
           vm.errorMessage = error.message;
         });
     }
+
   }
 })();
