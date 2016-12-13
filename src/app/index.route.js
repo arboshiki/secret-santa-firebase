@@ -54,11 +54,11 @@
         resolve: {
           // controller will not be loaded until $waitForSignIn resolves
           // Auth refers to our $firebaseAuth wrapper in the factory below
-          // "currentAuth": ["Auth", function (Auth) {
-          //   console.log("resolve");
-          //   // $waitForSignIn returns a promise so the resolve waits for it to complete
-          //   return Auth.$requireSignIn();
-          // }]
+          "currentAuth": ["Auth", function (Auth) {
+            console.log("resolve");
+            // $waitForSignIn returns a promise so the resolve waits for it to complete
+            return Auth.$requireSignIn();
+          }],
           "group": ["FirebaseService", "$stateParams", function (FirebaseService, $stateParams) {
             console.log("users resolve");
             // $waitForSignIn returns a promise so the resolve waits for it to complete

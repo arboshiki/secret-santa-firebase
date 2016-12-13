@@ -30,7 +30,7 @@
     }
 
     function getGroupById(groupId) {
-      return $firebaseObject(firebase.database().ref('groups/' + groupId));
+      return $firebaseObject(firebase.database().ref('groups/' + groupId)).$loaded();
     }
 
   }

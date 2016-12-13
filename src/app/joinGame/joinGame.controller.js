@@ -26,13 +26,20 @@
         firebase.database().ref('userGroups/' + vm.user.uid + '/' + vm.group.$id).once('value', function (res) {
           if(!res.val()){
             var updateData = {};
-            updateData['userGroups/' + vm.user.uid + '/' + vm.group.$id] = vm.group;
-            updateData['groupUsers/' +'/'+ vm.group.$id +'/'+ vm.user.uid] = vm.user;
+            var userTemp = {
+              displayName: vm.user.displayName,
+              email: vm.user.email,
+              photoURL: vm.user.photoURL
+            };
+            var groupTemp = {
+              creatorId: vm.group.creatorId,
+              name: vm.group.name
+            };
+            updateData['userGroups/' + vm.user.uid + '/' + vm.group.$id] = groupTemp;
+            updateData['groupUsers/' + vm.group.$id +'/'+ vm.user.uid] = userTemp;
             firebase.database().ref().update(updateData);
           }
         });
     }
-    console.log(group);
-
   }
 })();
