@@ -1,6 +1,12 @@
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
   <header class="mdl-layout__header">
+    <div class="left-menu">
+      <button ui-sref="main"
+              class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">keyboard_arrow_left</i>
+      </button>
+    </div>
     <div class="right-menu">
       <img src="{{vm.user.photoURL}}" alt="{{vm.user.displayName}}" height="40px">
       <button id="demo-menu-lower-right"

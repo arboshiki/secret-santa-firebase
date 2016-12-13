@@ -23,10 +23,17 @@
 
     function init() {
 
+      $rootScope.$on('$stateChangeSuccess',
+        function(event, toState, toParams, fromState, fromParams) {
+          $state.current = toState;
+        }
+      );
 
       var userStateChangeFn = $rootScope.$on('userStateChange', function($event, user){
         if (user){
-          $state.go(Auth.mainState);
+          if($state.current.name == 'login'){
+            $state.go(Auth.mainState);
+          }
         } else {
           $state.go(Auth.loginState);
         }
