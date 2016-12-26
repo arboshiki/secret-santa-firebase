@@ -18,7 +18,8 @@
     "animate.css": "~3.4.0",
     "angular": "~1.5.3",
     "angularfire": "^2.1.0",
-    "angular-material-design-lite": "^0.4.4"
+    "angular-material-design-lite": "^0.4.4",
+    "angular-material": "^1.1.1"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"

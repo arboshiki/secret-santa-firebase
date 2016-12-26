@@ -3,6 +3,7 @@
 
     angular
         .module('secretSantaFirebase', [
+            'ngMaterial',
             'ngAnimate',
             'ngCookies',
             'ngTouch',

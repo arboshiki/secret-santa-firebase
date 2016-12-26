@@ -11,8 +11,8 @@
   /** @ngInject */
   function Auth($firebaseAuth) {
     var auth = $firebaseAuth();
-    auth.loginState = 'login';
-    auth.mainState = 'main';
+    auth.loginState = 'auth.login';
+    auth.mainState = 'app.main';
 
     return auth;
   }

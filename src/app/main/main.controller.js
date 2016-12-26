@@ -51,7 +51,7 @@
     }
 
     function openGroup(group) {
-      $state.go('group', {'groupId': group.$id});
+      $state.go('app.group', {'groupId': group.$id});
     }
 
     function removeGroup(group) {

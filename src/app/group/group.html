@@ -1,73 +1,36 @@
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-
-  <header class="mdl-layout__header">
-    <div class="left-menu">
-      <button ui-sref="main"
-              class="mdl-button mdl-js-button mdl-button--icon">
-        <i class="material-icons">keyboard_arrow_left</i>
-      </button>
-    </div>
-    <div class="right-menu">
-      <img src="{{vm.user.photoURL}}" alt="{{vm.user.displayName}}" height="40px">
-      <button id="demo-menu-lower-right"
-              class="mdl-button mdl-js-button mdl-button--icon">
-        <i class="material-icons">more_vert</i>
-      </button>
-
-      <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-          for="demo-menu-lower-right">
-        <li class="mdl-menu__item">Some Action</li>
-        <li class="mdl-menu__item">Another Action</li>
-        <li disabled class="mdl-menu__item">Disabled Action</li>
-        <li class="mdl-menu__item">Yet Another Action</li>
-      </ul>
-    </div>
-  </header>
-
-  <main class="mdl-layout__content">
-    <div class="page-content">
-      <div class="acme-card-wide mdl-card" style="text-align: center">
+<div class="page-content">
+    <div class="acme-card-wide mdl-card" style="text-align: center">
         <div class="">
-          <!-- Accent-colored raised button -->
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
-                  ng-click="vm.generateAssignments()" ng-if="!vm.generated">
-            გენერირება
-          </button>
-          <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-            <thead>
-            <tr>
-              <th>Avatar</th>
-              <th>Display Name</th>
-              <th>Email</th>
-              <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="user in vm.users">
-              <td class="mdl-data-table__cell--non-numeric" style="padding-bottom: 15px">
-                <img ng-src="{{user.photoURL}}" alt="" style="height: 35px;">
-              </td>
-              <td class="mdl-data-table__cell--non-numeric">{{user.displayName}}</td>
-              <td class="mdl-data-table__cell--non-numeric">{{user.email}}</td>
-              <td>
-                <button class="mdl-button mdl-js-button mdl-button--icon" ng-click="vm.removeUser(user)" ng-hide="user.$id == vm.user.uid">
-                  <i class="material-icons">delete</i>
-                </button>
-              </td>
-            </tr>
-            </tbody>
-          </table>
+            <!-- Accent-colored raised button -->
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+                    ng-click="vm.generateAssignments()" ng-if="!vm.generated">
+                გენერირება
+            </button>
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                <thead>
+                <tr>
+                    <th>Avatar</th>
+                    <th>Display Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="user in vm.users">
+                    <td class="mdl-data-table__cell--non-numeric" style="padding-bottom: 15px">
+                        <img ng-src="{{user.photoURL}}" alt="" style="height: 35px;">
+                    </td>
+                    <td class="mdl-data-table__cell--non-numeric">{{user.displayName}}</td>
+                    <td class="mdl-data-table__cell--non-numeric">{{user.email}}</td>
+                    <td>
+                        <button class="mdl-button mdl-js-button mdl-button--icon" ng-click="vm.removeUser(user)"
+                                ng-hide="user.$id == vm.user.uid">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-      </div>
     </div>
-  </main>
-
-  <!--<footer class="mdl-mini-footer">-->
-    <!--<div class="mdl-mini-footer__right-section">-->
-      <!--<div class="mdl-logo">-->
-        <!--Secret Santa Group 2016&copy All Right Reserved.-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</footer>-->
-
 </div>

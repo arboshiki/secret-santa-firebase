@@ -12,11 +12,40 @@
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
-      .state('group', {
+      .state('app', {
+        abstract: true,
+        views: {
+          'main@': {
+            templateUrl: 'app/layouts/main.html'
+          }
+        }
+      })
+      .state('app.main', {
+        url: '/',
+        views: {
+          'content@app': {
+            templateUrl: 'app/main/main.html',
+            controller: 'MainController as vm'
+          }
+        },
+        resolve: {
+          // controller will not be loaded until $waitForSignIn resolves
+          // Auth refers to our $firebaseAuth wrapper in the factory below
+          "currentAuth": ["Auth", function (Auth) {
+            console.log("resolve");
+            // $waitForSignIn returns a promise so the resolve waits for it to complete
+            return Auth.$requireSignIn();
+          }]
+        }
+      })
+      .state('app.group', {
         url: '/group/:groupId',
-        templateUrl: 'app/group/group.html',
-        controller: 'GroupController',
-        controllerAs: 'vm',
+        views: {
+          'content@app': {
+            templateUrl: 'app/group/group.html',
+            controller: 'GroupController as vm'
+          }
+        },
         resolve: {
           // controller will not be loaded until $waitForSignIn resolves
           // Auth refers to our $firebaseAuth wrapper in the factory below
@@ -32,25 +61,14 @@
           }]
         }
       })
-      .state('main', {
-        url: '/',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainController',
-        controllerAs: 'vm',
-        resolve: {
-          // controller will not be loaded until $waitForSignIn resolves
-          // Auth refers to our $firebaseAuth wrapper in the factory below
-          "currentAuth": ["Auth", function (Auth) {
-            console.log("resolve");
-            // $waitForSignIn returns a promise so the resolve waits for it to complete
-            return Auth.$requireSignIn();
-          }]
-        }
-      }).state('join-game', {
+      .state('app.join-game', {
         url: '/join-game/:groupId',
-        templateUrl: 'app/joinGame/joinGame.html',
-        controller: 'JoinGameController',
-        controllerAs: 'vm',
+        views: {
+          'content@app': {
+            templateUrl: 'app/main/joinGame.html',
+            controller: 'JoinGameController as vm'
+          }
+        },
         resolve: {
           // controller will not be loaded until $waitForSignIn resolves
           // Auth refers to our $firebaseAuth wrapper in the factory below

@@ -2,23 +2,35 @@
  * Created by guga on 12/12/16.
  */
 (function () {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('secretSantaFirebase.login', [])
-        .config(Config);
+  angular
+    .module('secretSantaFirebase.login', [])
+    .config(Config);
 
-    /** @ngInject */
-    function Config($stateProvider) {
+  /** @ngInject */
+  function Config($stateProvider) {
 
-        $stateProvider
-            .state('login', {
-                url: '/login/:groupId?',
-                templateUrl: 'app/login/login.html',
-                controller: 'LoginController',
-                controllerAs: 'vm',
-                bodyClass: 'login'
-            });
+    $stateProvider
+      .state('auth',{
+        abstract: true,
+        views: {
+          'main@': {
+            templateUrl: 'app/layouts/content.html',
+            controller: 'MainController as vm'
+          }
+        }
+      })
+      .state('auth.login', {
+        url: '/login/:groupId?',
+        bodyClass: 'login',
+        views: {
+          'content@auth': {
+            templateUrl: 'app/login/login.html',
+            controller : 'LoginController as vm'
+          }
+        }
+      });
 
-    }
+  }
 })();
