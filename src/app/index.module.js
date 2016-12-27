@@ -12,8 +12,6 @@
             'ui.router',
             'mdl',
             'firebase',
-
-            'toastr',
             'secretSantaFirebase.login'
         ]);
 

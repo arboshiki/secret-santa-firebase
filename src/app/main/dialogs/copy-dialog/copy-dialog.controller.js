@@ -9,7 +9,7 @@
     .controller('CopyDialogController', CopyDialogController);
 
   /** @ngInject */
-  function CopyDialogController(Link, toastr, $mdDialog) {
+  function CopyDialogController(Link, toast, $mdDialog) {
     var vm = this;
     vm.link = Link;
     vm.close = close;
@@ -24,10 +24,10 @@
       try {
         var successful = document.execCommand('copy');
         var msg = successful ? 'successful' : 'unsuccessful';
-        toastr.success('URL is copied in the clipboard');
+        toast.success('URL is copied in the clipboard');
         $mdDialog.hide();
       } catch (err) {
-        toastr.error('Error copying, copy by yourself','Error');
+        toast.error('Error copying, copy by yourself');
       }
     }
   }

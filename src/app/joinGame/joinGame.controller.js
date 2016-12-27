@@ -6,7 +6,7 @@
     .controller('JoinGameController', JoinGameController);
 
   /** @ngInject */
-  function JoinGameController($rootScope, toastr, UserService, FirebaseService, $state, Auth, group) {
+  function JoinGameController($rootScope,  UserService, FirebaseService, $state, Auth, group) {
     var vm = this;
     vm.group = group;
     vm.user = UserService.current;

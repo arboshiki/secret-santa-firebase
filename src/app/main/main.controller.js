@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($rootScope, toastr, UserService, FirebaseService, $state, Auth, $mdDialog) {
+  function MainController($rootScope, UserService, FirebaseService, $state, Auth, $mdDialog) {
     var vm = this;
 
     vm.isLogedIn = true;

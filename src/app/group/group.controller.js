@@ -6,7 +6,7 @@
     .controller('GroupController', GroupController);
 
   /** @ngInject */
-  function GroupController($rootScope, toastr, UserService, FirebaseService, users, $stateParams, Auth, $firebaseObject) {
+  function GroupController($rootScope, toast, UserService, FirebaseService, users, $stateParams, Auth, $firebaseObject) {
 
     var vm = this;
     vm.users = users;
@@ -53,7 +53,7 @@
     function generateData(usersToAssign, usersToChoose) {
 
       if(usersToAssign.length < 2){
-        toastr.error('მომხმარებელთა რაოდენობა არასაკმარისია','შეცდომა');
+        toast.error('მომხმარებელთა რაოდენობა არასაკმარისია');
         return;
       }
       var updateData = null;
@@ -63,11 +63,11 @@
         reset++;
       }
       if(reset == 5){
-        toastr.error('დაგენერირება ვერ მოხერხდა','შეცდომა');
+        toast.error('დაგენერირება ვერ მოხერხდა');
         return;
       }
       firebase.database().ref('assigned/' + $stateParams.groupId).update(updateData);
-      toastr.success('წარმატებით დაგენერირდა','წარმატება');
+      toast.success('წარმატებით დაგენერირდა');
       vm.generated = true;
     }
 
