@@ -9,7 +9,6 @@
   function MainController($rootScope, toastr, UserService, FirebaseService, $state, Auth) {
     var vm = this;
 
-    console.log(UserService.current);
     vm.isLogedIn = true;
     vm.isOwner = true;
     vm.user = UserService.current;

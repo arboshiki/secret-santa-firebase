@@ -12,7 +12,7 @@
     vm.users = users;
     vm.user = UserService.current;
     vm.generated = true;
-
+    $rootScope.backState = 'app.main';
     //methods
     vm.removeUser = removeUser;
     vm.generateAssignments = generateAssignments;

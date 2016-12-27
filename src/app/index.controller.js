@@ -14,7 +14,9 @@
 
     // Data
     $rootScope.UserService = UserService;
+
     // Methods
+    vm.goBack = goBack;
 
     init();
 
@@ -27,7 +29,13 @@
           $state.current = toState;
         }
       );
-
+      $rootScope.$watch('backState',function (newVal, oldVal) {
+        if(newVal){
+          vm.back = true;
+        }else{
+          vm.back = false;
+        }
+      });
       var userStateChangeFn = $rootScope.$on('userStateChange', function($event, user){
         if (user){
           vm.user = user;
@@ -45,5 +53,11 @@
       });
       $scope.$on('$destroy', userStateChangeFn);
     }
+
+    function goBack() {
+      $state.go($rootScope.backState, $rootScope.backStateParams);
+      $rootScope.backState = null;
+    }
+
   }
 })();

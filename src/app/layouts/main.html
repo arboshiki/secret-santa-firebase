@@ -1,6 +1,11 @@
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
     <header class="mdl-layout__header">
+        <div class="left-menu">
+            <md-button class="md-icon-button" ng-click="vm.goBack()" ng-if="vm.back">
+                <i class="material-icons">keyboard_arrow_left</i>
+            </md-button>
+        </div>
         <img src="{{vm.user.photoURL}}" alt="{{vm.user.displayName}}" height="40px">
         <md-menu class="right-menu">
 
