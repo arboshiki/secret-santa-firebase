@@ -6,7 +6,6 @@
             'ngMaterial',
             'ngAnimate',
             'ngCookies',
-            'ngTouch',
             'ngSanitize',
             'ngMessages',
             'ngAria',

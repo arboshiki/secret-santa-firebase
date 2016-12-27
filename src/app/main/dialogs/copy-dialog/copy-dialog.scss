@@ -1,0 +1,24 @@
+.copy-selection{
+  margin: 16px;
+  min-width: 420px;
+
+  .content{
+    border: 1px grey solid;
+    border-radius: 2px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+
+    #idCopyText{
+      border: 0px;
+      width: 100%;
+      padding: 12px;
+      background: #ececec;
+    }
+
+    md-button{
+      border-left: 2px grey solid;
+      border-radius: 0px;
+      margin-left:0px;
+    }
+  }
+}

@@ -8,19 +8,26 @@
     <div class="acme-card-wide mdl-card" style="text-align: center">
         <div class="">
             <!-- Simple Textfield -->
-            <form action="#" id="createGroup">
+            <form action="#" id="createGroup" name="createGroupForm">
                 <md-input-container>
                     <label>Enter Group Name</label>
-                    <input type="text" ng-model="vm.groupName">
+                    <input type="text" ng-model="vm.groupName" required>
                 </md-input-container>
-                <div class="">
-                    <md-button type="button"
-                               class="md-raised md-primary"
-                               ng-click="vm.createGroup()">
-                        Create Group
-                    </md-button>
-                </div>
+                <md-button style="margin-bottom:31px;"
+                           class="md-raised md-primary"
+                           ng-click="vm.createGroup()"
+                           ng-disabled="createGroupForm.$invalid">
+                    Create Group
+                </md-button>
             </form>
+        </div>
+        <div>
+            <span>
+                {{vm.recentName}}
+            </span>
+            <pre>
+                {{vm.recentUrl}}
+            </pre>
         </div>
     </div>
     <div class="acme-card-wide mdl-card" style="text-align: center">

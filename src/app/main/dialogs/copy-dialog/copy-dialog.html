@@ -1,0 +1,11 @@
+<div class="copy-selection">
+    <strong>Copy Url</strong>
+    <div layout="row" class="content">
+        <input type="text" ng-model="vm.link" id="idCopyText" readonly>
+        <md-button ng-click="vm.copy($event)" class="md-icon-button">
+            <i class="material-icons">content_copy</i></md-button>
+    </div>
+    <div layout="row" layout-align="end center">
+        <md-button ng-click="vm.close()">Close</md-button>
+    </div>
+</div>

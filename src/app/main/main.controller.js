@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($rootScope, toastr, UserService, FirebaseService, $state, Auth) {
+  function MainController($rootScope, toastr, UserService, FirebaseService, $state, Auth, $mdDialog) {
     var vm = this;
 
     vm.isLogedIn = true;
@@ -29,6 +29,7 @@
         'creatorId': vm.user.uid
       };
 
+
       var groupRef = firebase.database().ref('groups').push();
       var groupId = groupRef.getKey();
 
@@ -39,12 +40,15 @@
       firebase.database().ref().update(updateData);
 
 
-      UserService.saveUserData('groupUsers/' +'/'+ groupId +'/'+ vm.user.uid, vm.user);
+      UserService.saveUserData('groupUsers/' + '/' + groupId + '/' + vm.user.uid, vm.user);
 
-
+      vm.recentName = vm.groupName;
+      vm.groupName = null;
+      vm.recentUrl = getGroupLink(groupId);
       // firebase.database().ref('groupUsers').push().set(data);
 
     }
+
     function logOut() {
       Auth.$signOut();
     }
@@ -57,23 +61,36 @@
       var groupId = group.$id;
       FirebaseService.getUsersByGroup(groupId).$loaded().then(function (res) {
 
-        var updateData ={};
-        for(var i = 0; i < res.length; i++){
-          updateData['userGroups/'+res[i].$id+'/'+groupId] = null;
+        var updateData = {};
+        for (var i = 0; i < res.length; i++) {
+          updateData['userGroups/' + res[i].$id + '/' + groupId] = null;
         }
-        updateData['groupUsers/'+groupId] = null;
-        updateData['groups/'+groupId] = null;
+        updateData['groupUsers/' + groupId] = null;
+        updateData['groups/' + groupId] = null;
 
         firebase.database().ref().update(updateData);
 
       });
 
     }
+
     function copyGroupLink(group) {
+      $mdDialog.show({
+          clickOutsideToClose: true,
+          templateUrl: 'app/main/dialogs/copy-dialog/copy-dialog.html',
+          controller: 'CopyDialogController',
+          controllerAs: 'vm',
+          locals: {
+            Link: getGroupLink(group.$id)
+          }
+        }
+      );
+    }
+
+    function getGroupLink(id) {
       var url = window.location.href;
       var arr = url.split("/");
-      var link = arr[0] + "//" + arr[2] + '/#/join-game/'+group.$id;
-        console.log(link);
+      return arr[0] + "//" + arr[2] + '/#/join-game/' + id;
     }
   }
 })();
