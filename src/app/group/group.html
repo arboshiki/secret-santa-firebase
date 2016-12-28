@@ -1,6 +1,9 @@
 <div class="page-content">
     <div class="acme-card-wide mdl-card" style="text-align: center">
         <div class="">
+            <div layout="row" layout-align="center center" style="padding: 24px;">
+                <strong>{{vm.group.name}}</strong>
+            </div>
             <!-- Accent-colored raised button -->
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
                     ng-click="vm.generateAssignments()" ng-if="!vm.generated">

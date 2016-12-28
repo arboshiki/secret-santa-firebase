@@ -24,6 +24,9 @@
       firebase.database().ref('assigned/' + $stateParams.groupId).once('value',function (res) {
         vm.generated = res.val() != null;
       });
+      FirebaseService.getGroupById($stateParams.groupId).then(function (res) {
+        vm.group = res;
+      });
     }
 
     function removeUser(user) {
