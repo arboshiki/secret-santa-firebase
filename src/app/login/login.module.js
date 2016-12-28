@@ -16,8 +16,7 @@
         abstract: true,
         views: {
           'main@': {
-            templateUrl: 'app/layouts/content.html',
-            controller: 'MainController as vm'
+            templateUrl: 'app/layouts/content.html'
           }
         }
       })

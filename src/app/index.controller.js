@@ -17,6 +17,7 @@
 
     // Methods
     vm.goBack = goBack;
+    vm.logout = logout;
 
     init();
 
@@ -39,8 +40,7 @@
       var userStateChangeFn = $rootScope.$on('userStateChange', function($event, user){
         if (user){
           vm.user = user;
-          if($state.current.name == 'login'){
-            debugger;
+          if($state.current.name == 'auth.login'){
             if($stateParams.groupId){
               $state.go('app.join-game',{groupId: $stateParams.groupId})
             }else{
@@ -48,6 +48,7 @@
             }
           }
         } else {
+          vm.user = null;
           // $state.go(Auth.loginState);
         }
       });
@@ -57,6 +58,12 @@
     function goBack() {
       $state.go($rootScope.backState, $rootScope.backStateParams);
       $rootScope.backState = null;
+    }
+
+    function logout() {
+      firebase.auth().signOut().then(function () {
+        $state.go('auth.login');
+      });
     }
 
   }

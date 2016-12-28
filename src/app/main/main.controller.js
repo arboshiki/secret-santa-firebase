@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($rootScope, UserService, FirebaseService, $state, Auth, $mdDialog) {
+  function MainController($rootScope, UserService, FirebaseService, $state, Auth, $mdDialog,toast) {
     var vm = this;
 
     vm.isLogedIn = true;
@@ -21,6 +21,7 @@
     vm.removeGroup = removeGroup;
     vm.logOut = logOut;
     vm.copyGroupLink = copyGroupLink;
+    vm.copy = copy;
 
     function createGroup() {
       console.log(vm.groupName);
@@ -46,7 +47,6 @@
       vm.groupName = null;
       vm.recentUrl = getGroupLink(groupId);
       // firebase.database().ref('groupUsers').push().set(data);
-
     }
 
     function logOut() {
@@ -85,6 +85,19 @@
           }
         }
       );
+    }
+
+    function copy(ev) {
+      var temp = document.getElementById('idCopyTextMain');
+      temp.select();
+      try {
+        var successful = document.execCommand('copy');
+        var msg = successful ? 'successful' : 'unsuccessful';
+        toast.success('URL is copied in the clipboard');
+        $mdDialog.hide();
+      } catch (err) {
+        toast.error('Error copying, copy by yourself');
+      }
     }
 
     function getGroupLink(id) {

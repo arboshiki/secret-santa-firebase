@@ -16,18 +16,23 @@
                 <md-button style="margin-bottom:31px;"
                            class="md-raised md-primary"
                            ng-click="vm.createGroup()"
+                           type='submit'
                            ng-disabled="createGroupForm.$invalid">
                     Create Group
                 </md-button>
             </form>
         </div>
-        <div>
+        <div ng-if="vm.recentName">
             <span>
                 {{vm.recentName}}
             </span>
-            <pre>
-                {{vm.recentUrl}}
-            </pre>
+            <div class="copy-selection" layout="row" layout-align="center center">
+                <div layout="row" class="content">
+                    <input type="text" ng-model="vm.recentUrl" id="idCopyTextMain" readonly>
+                    <md-button ng-click="vm.copy($event)" class="md-icon-button">
+                        <i class="material-icons">content_copy</i></md-button>
+                </div>
+            </div>
         </div>
     </div>
     <div class="acme-card-wide mdl-card" style="text-align: center">
