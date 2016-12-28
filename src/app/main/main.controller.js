@@ -76,20 +76,29 @@
     }
 
     function removeGroup(group) {
-      var groupId = group.$id;
-      FirebaseService.getUsersByGroup(groupId).$loaded().then(function (res) {
+      var confirm = $mdDialog.confirm()
+        .title('Attention')
+        .textContent('Would you like to delete Group '+ group.name +'?')
+        .ok('Yes')
+        .cancel('No');
+      $mdDialog.show(confirm).then(function() {
+        var groupId = group.$id;
+        FirebaseService.getUsersByGroup(groupId).$loaded().then(function (res) {
 
-        var updateData = {};
-        for (var i = 0; i < res.length; i++) {
-          updateData['userGroups/' + res[i].$id + '/' + groupId] = null;
-        }
-        updateData['groupUsers/' + groupId] = null;
-        updateData['groups/' + groupId] = null;
+          var updateData = {};
+          for (var i = 0; i < res.length; i++) {
+            updateData['userGroups/' + res[i].$id + '/' + groupId] = null;
+          }
+          updateData['groupUsers/' + groupId] = null;
+          updateData['groups/' + groupId] = null;
 
-        firebase.database().ref().update(updateData);
+          firebase.database().ref().update(updateData);
 
+        });
+
+      }, function() {
+        //cancel
       });
-
     }
 
     function copyGroupLink(group) {
