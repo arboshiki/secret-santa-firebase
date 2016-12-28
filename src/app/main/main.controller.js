@@ -31,7 +31,6 @@
           if(UserService.current !== null){
             vm.user = UserService.current;
             vm.groups = FirebaseService.getGroupsByUser(vm.user.uid);
-            console.log(vm.groups);
           }else{
             init();
           }
@@ -84,7 +83,6 @@
       $mdDialog.show(confirm).then(function() {
         var groupId = group.$id;
         FirebaseService.getUsersByGroup(groupId).$loaded().then(function (res) {
-
           var updateData = {};
           for (var i = 0; i < res.length; i++) {
             updateData['userGroups/' + res[i].$id + '/' + groupId] = null;
