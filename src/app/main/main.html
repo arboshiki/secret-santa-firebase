@@ -49,7 +49,7 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="group in vm.groups">
-                    <td class="mdl-data-table__cell--non-numeric"><input type="checkbox" ng-model="group.creatorId == vm.user.uid" readonly> </td>
+                    <td class="mdl-data-table__cell--non-numeric"><input type="checkbox" ng-value="group.creatorId == vm.user.uid" readonly> </td>
                     <td class="mdl-data-table__cell--non-numeric">{{group.name}}</td>
                     <td>
                         <md-button class="md-icon-button"
