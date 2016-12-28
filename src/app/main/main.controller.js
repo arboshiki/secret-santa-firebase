@@ -6,14 +6,14 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($rootScope, UserService, FirebaseService, $state, Auth, $mdDialog,toast) {
+  function MainController($rootScope, UserService, FirebaseService, $state, Auth, $mdDialog,toast,$timeout) {
     var vm = this;
 
     vm.isLogedIn = true;
     vm.isOwner = true;
-    vm.user = UserService.current;
+    vm.user = null;
     vm.groupName = null;
-    vm.groups = FirebaseService.getGroupsByUser(vm.user.uid);
+    vm.groups = null;
 
     // methods
     vm.createGroup = createGroup;
@@ -23,8 +23,21 @@
     vm.copyGroupLink = copyGroupLink;
     vm.copy = copy;
 
+
+    init();
+
+    function init() {
+        $timeout(function () {
+          if(UserService.current !== null){
+            vm.user = UserService.current;
+            vm.groups = FirebaseService.getGroupsByUser(vm.user.uid);
+          }else{
+            init();
+          }
+        },100);
+    }
+
     function createGroup() {
-      console.log(vm.groupName);
       var dataGroups = {
         'name': vm.groupName,
         'creatorId': vm.user.uid
