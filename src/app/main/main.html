@@ -58,7 +58,7 @@
                                    ng-click="vm.openGroup(group)">
                             <i class="material-icons">remove_red_eye</i>
                         </md-button>
-                        <md-button class="md-icon-button"
+                        <md-button class="md-icon-button" ng-if="group.creatorId == vm.user.uid"
                                    ng-click="vm.removeGroup(group)">
                             <i class="material-icons">delete</i>
                         </md-button>

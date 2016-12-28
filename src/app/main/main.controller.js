@@ -31,6 +31,7 @@
           if(UserService.current !== null){
             vm.user = UserService.current;
             vm.groups = FirebaseService.getGroupsByUser(vm.user.uid);
+            console.log(vm.groups);
           }else{
             init();
           }
@@ -50,7 +51,6 @@
       var updateData = {};
       updateData['groups/' + groupId] = dataGroups;
       updateData['userGroups/' + vm.user.uid + '/' + groupId] = dataGroups;
-      console.log(updateData);
       firebase.database().ref().update(updateData);
 
 
