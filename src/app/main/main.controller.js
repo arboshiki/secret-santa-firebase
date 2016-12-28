@@ -59,9 +59,12 @@
       vm.groupName = null;
       vm.recentUrl = getGroupLink(groupId);
       // firebase.database().ref('groupUsers').push().set(data);
-      angular.element('#idGroupContainer').blur();
-      $scope.createGroupForm.$setPristine();
-      $scope.createGroupForm.$setUntouched();
+      $timeout(function () {
+        angular.element('#idGroupContainer').blur();
+        $scope.createGroupForm.$setPristine();
+        $scope.createGroupForm.$setUntouched();
+      });
+
     }
 
     function logOut() {
