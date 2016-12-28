@@ -56,7 +56,6 @@
 
       UserService.saveUserData('groupUsers/' + '/' + groupId + '/' + vm.user.uid, vm.user);
 
-      vm.recentName = vm.groupName;
       vm.groupName = null;
       vm.recentUrl = getGroupLink(groupId);
       // firebase.database().ref('groupUsers').push().set(data);
