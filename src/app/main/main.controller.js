@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($rootScope, UserService, FirebaseService, $state, Auth, $mdDialog,toast,$timeout) {
+  function MainController($rootScope, UserService, FirebaseService, $state, Auth, $mdDialog,toast,$timeout, $scope) {
     var vm = this;
 
     vm.isLogedIn = true;
@@ -59,6 +59,9 @@
       vm.groupName = null;
       vm.recentUrl = getGroupLink(groupId);
       // firebase.database().ref('groupUsers').push().set(data);
+      angular.element('#idGroupContainer').blur();
+      $scope.createGroupForm.$setPristine();
+      $scope.createGroupForm.$setUntouched();
     }
 
     function logOut() {
